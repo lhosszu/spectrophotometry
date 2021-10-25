@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_acquisition_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentInsetLeft="@dimen/margin_30dp"
+            app:contentInsetStart="@dimen/margin_30dp"
+            app:title="acquisition">
+
+            <ImageView
+                android:id="@+id/image_battery_level_acquisition"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_30dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/label_battery_level"
+                android:src="@drawable/level_list_battery_levels" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_transmittance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/layout_absorbance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_acquisition_page">
+
+        <ImageButton
+            android:id="@+id/btn_transmittance"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="@dimen/width_130dp"
+            android:layout_height="@dimen/height_130dp"
+            android:background="@drawable/btn_circular"
+            android:contentDescription="@string/btn_transmittance"
+            android:scrollY="10dp"
+            android:src="@drawable/ic_highlight"
+            android:tint="@color/blue_dark_background"
+            app:backgroundTint="@color/gray_light_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_transmittance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:text="@string/btn_transmittance"
+            android:textColor="@color/gray_dark_text"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_absorbance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/layout_calibration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_transmittance">
+
+        <ImageButton
+            android:id="@+id/btn_absorbance"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="@dimen/width_130dp"
+            android:layout_height="@dimen/height_130dp"
+            android:background="@drawable/btn_circular"
+            android:contentDescription="@string/btn_absorbance"
+            android:scrollY="10dp"
+            android:src="@drawable/ic_light_off"
+            android:tint="@color/blue_dark_background"
+            app:backgroundTint="@color/gray_light_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_absorbance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:text="@string/label_absorbance"
+            android:textColor="@color/gray_dark_text"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_calibration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/layout_experiment_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_absorbance">
+
+        <ImageButton
+            android:id="@+id/btn_calibration"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="@dimen/width_130dp"
+            android:layout_height="@dimen/height_130dp"
+            android:background="@drawable/btn_circular"
+            android:contentDescription="@string/btn_calibration"
+            android:scrollY="10dp"
+            android:src="@drawable/ic_linear_scale"
+            android:tint="@color/blue_dark_background"
+            app:backgroundTint="@color/gray_light_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_calibration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_30dp"
+            android:text="@string/btn_calibration"
+            android:textColor="@color/gray_dark_text"
+            android:textSize="@dimen/text_size_15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_experiment_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_calibration">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_experiment_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_30dp"
+            android:layout_marginEnd="@dimen/margin_30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_experiment_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/label_experiment_name" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_experiments_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_experiments_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/material_toolbar_experiments_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentInsetLeft="@dimen/margin_30dp"
+            app:contentInsetStart="@dimen/margin_30dp"
+            app:title="experiments">
+
+            <ImageView
+                android:id="@+id/image_battery_level_experiments"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_30dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/label_battery_level"
+                android:src="@drawable/level_list_battery_levels" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/view_recycler_experiment_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:layout_marginBottom="@dimen/margin_15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_experiments_page" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

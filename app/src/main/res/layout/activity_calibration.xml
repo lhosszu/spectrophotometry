@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_calibration_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentInsetLeft="@dimen/margin_30dp"
+            app:contentInsetStart="@dimen/margin_30dp"
+            app:title="calibration">
+
+            <ImageView
+                android:id="@+id/image_calibration_battery_level"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_30dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/label_battery_level"
+                android:src="@drawable/level_list_battery_levels" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/text_calibration_experiment_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:layout_marginEnd="@dimen/margin_15dp"
+        android:text="@string/label_experiment_name"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_calibration_page" />
+
+    <TextView
+        android:id="@+id/text_calibration_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:layout_marginEnd="@dimen/margin_15dp"
+        android:text="@string/label_experiment_date"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/text_calibration_experiment_name" />
+
+    <TextView
+        android:id="@+id/text_calibration_wavelength"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:layout_marginEnd="@dimen/margin_15dp"
+        android:text="@string/label_wavelength"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/text_calibration_date" />
+
+    <TextView
+        android:id="@+id/text_calibration_absorbance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:layout_marginEnd="@dimen/margin_15dp"
+        android:text="@string/label_absorbance"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintEnd_toStartOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/text_calibration_wavelength" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_calibration_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/text_calibration_name_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginTop="@dimen/margin_30dp"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintStart_toEndOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_calibration_page" />
+
+    <TextView
+        android:id="@+id/text_calibration_date_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintStart_toEndOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/text_calibration_name_placeholder" />
+
+    <TextView
+        android:id="@+id/text_calibration_wavelength_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintStart_toEndOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@+id/text_calibration_date_placeholder" />
+
+    <TextView
+        android:id="@+id/text_calibration_absorbance_placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15dp"
+        android:layout_marginTop="@dimen/margin_15dp"
+        android:textSize="@dimen/text_size_15sp"
+        app:layout_constraintStart_toEndOf="@id/guideline_calibration_page"
+        app:layout_constraintTop_toBottomOf="@id/text_calibration_wavelength_placeholder" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

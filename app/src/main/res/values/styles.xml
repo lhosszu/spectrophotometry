@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/green_light_primary</item>
+        <item name="colorPrimaryDark">@color/green_primary</item>
+        <item name="colorAccent">@color/gray_dark_text</item>
+        <item name="fontFamily">@font/bold</item>
+        <item name="android:buttonStyle">@style/Button</item>
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

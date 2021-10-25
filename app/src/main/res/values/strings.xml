@@ -1,0 +1,46 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Commons -->
+    <string name="app_name">spectrophotometer</string>
+    <string name="label_battery_level">battery level</string>
+    <string name="btn_cancel" tools:ignore="ButtonCase">cancel</string>
+
+    <!-- Main page -->
+    <string name="btn_bluetooth">bluetooth</string>
+    <string name="btn_acquisition">acquisition</string>
+    <string name="btn_experiments">experiments</string>
+    <string name="btn_settings">settings</string>
+
+    <!-- Settings page -->
+    <string name="switch_auto_connect">auto connect</string>
+    <string name="switch_smooth">smooth spectrum</string>
+    <string name="switch_analyze">analyze peaks</string>
+    <string name="switch_open_after">auto visualization</string>
+    <string name="switch_selected_wavelength">select wavelength</string>
+
+    <!-- Data acquisition page -->
+    <string name="btn_absorbance">absorbance</string>
+    <string name="btn_transmittance">transmittance</string>
+    <string name="btn_calibration">calibration</string>
+    <string name="btn_sample_inserted">inserted</string>
+
+    <string name="label_experiment_name">experiment name</string>
+    <string name="label_experiment_date">experiment date</string>
+    <string name="label_experiment_type">experiment type</string>
+
+    <!-- Plot page -->
+    <string name="description_spectrum">spectrum image view</string>
+    <string name="label_spectrum">spectrum</string>
+
+    <!-- Single experiment / calibration page -->
+    <string name="label_wavelength">wavelength</string>
+    <string name="label_absorbance">absorbance</string>
+
+    <!-- Experiments page -->
+    <string name="ic_experiment_item">experiment item icon</string>
+
+    <!-- Toast messages -->
+    <string name="toast_missing_baseline">CANNOT FIND BASELINE</string>
+    <string name="toast_low_lamp_intensity">LOW LAMP INTENSITY</string>
+    <string name="toast_device_connected">DEVICE CONNECTED</string>
+    <string name="toast_device_disconnected">DEVICE DISCONNECTED</string>
+</resources>

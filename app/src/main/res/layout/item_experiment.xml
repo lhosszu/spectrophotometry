@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_15dp">
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:contentDescription="@string/ic_experiment_item"
+        android:src="@drawable/ic_list"
+        app:tint="@color/green_primary" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/experiments_layout_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/label_experiment_name"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <TextView
+            android:id="@+id/experiments_layout_item_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_experiment_date"
+            android:textColor="@color/green_primary"
+            android:textSize="@dimen/text_size_15sp" />
+
+        <TextView
+            android:id="@+id/experiments_layout_item_experiment_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/label_experiment_type"
+            android:textColor="@color/green_light_primary"
+            android:textSize="@dimen/text_size_15sp" />
+    </LinearLayout>
+
+</LinearLayout>

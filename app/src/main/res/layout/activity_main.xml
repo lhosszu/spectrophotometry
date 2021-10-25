@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar_main_page"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentInsetLeft="@dimen/margin_30dp"
+            app:contentInsetStart="@dimen/margin_30dp"
+            app:title="@string/app_name">
+
+            <ImageView
+                android:id="@+id/image_battery_level_main"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_30dp"
+                android:layout_gravity="end"
+                android:contentDescription="@string/label_battery_level"
+                android:src="@drawable/level_list_battery_levels" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/height_110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_main_page">
+
+        <RelativeLayout
+            android:id="@+id/layout_bluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30dp"
+            app:layout_constraintEnd_toStartOf="@id/layout_acquisition"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_bluetooth"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/btn_circular"
+                android:contentDescription="@string/btn_bluetooth"
+                android:scrollY="10dp"
+                android:src="@drawable/ic_baseline_bluetooth_24"
+                android:tint="@color/blue_dark_background"
+                app:backgroundTint="@color/gray_light_button" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:gravity="bottom|center"
+                android:paddingBottom="40dp"
+                android:text="@string/btn_bluetooth"
+                android:textColor="@color/gray_dark_text"
+                android:textSize="@dimen/text_size_15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_acquisition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_bluetooth"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_acquisition"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/btn_circular"
+                android:contentDescription="@string/btn_acquisition"
+                android:scrollY="10dp"
+                android:src="@drawable/ic_lightbulb"
+                android:tint="@color/blue_dark_background"
+                app:backgroundTint="@color/gray_light_button" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:gravity="bottom|center"
+                android:paddingBottom="40dp"
+                android:text="@string/btn_acquisition"
+                android:textColor="@color/gray_dark_text"
+                android:textSize="@dimen/text_size_15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_experiments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_60dp"
+            app:layout_constraintEnd_toStartOf="@id/layout_settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_bluetooth">
+
+            <ImageButton
+                android:id="@+id/btn_experiments"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/btn_circular"
+                android:contentDescription="@string/btn_experiments"
+                android:scrollY="10dp"
+                android:src="@drawable/ic_list"
+                android:tint="@color/blue_dark_background"
+                app:backgroundTint="@color/gray_light_button" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:gravity="bottom|center"
+                android:paddingBottom="40dp"
+                android:text="@string/btn_experiments"
+                android:textColor="@color/gray_dark_text"
+                android:textSize="@dimen/text_size_15sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/layout_experiments"
+            app:layout_constraintTop_toBottomOf="@id/layout_bluetooth">
+
+            <ImageButton
+                android:id="@+id/btn_settings"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/btn_circular"
+                android:contentDescription="@string/btn_settings"
+                android:scrollY="10dp"
+                android:src="@drawable/ic_settings"
+                android:tint="@color/blue_dark_background"
+                app:backgroundTint="@color/gray_light_button" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:gravity="bottom|center"
+                android:paddingBottom="40dp"
+                android:text="@string/btn_settings"
+                android:textColor="@color/gray_dark_text"
+                android:textSize="@dimen/text_size_15sp" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <Button
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
