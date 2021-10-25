@@ -25,7 +25,7 @@ import java.util.concurrent.CompletableFuture
  * - query background from the DB, collect fresh data, and calculate absorbance on single wavelength
  * - on CANCEL: no processing is done
  */
-class Calibration(private val context: WeakReference<Context>, private val experimentName: String) {
+class Calibration(private val context: WeakReference<Context>, private val experimentName: String, private val concentration: Double) {
 
     private val processingPipeline: SignalProcessingPipeline = SignalProcessingPipeline()
 
@@ -75,7 +75,7 @@ class Calibration(private val context: WeakReference<Context>, private val exper
     }
 
     private fun collect(wavelength: Int) {
-        val experiment = ExperimentDetails().calibration(experimentName, wavelength)
+        val experiment = ExperimentDetails().calibration(experimentName, wavelength, concentration)
         val background = SignalProcessingPipeline().queryPipeline("background")
         afterBackgroundQuery(experiment, background)
     }

@@ -24,6 +24,7 @@
     <string name="btn_sample_inserted">inserted</string>
 
     <string name="label_experiment_name">experiment name</string>
+    <string name="label_concentration">concentration</string>
     <string name="label_experiment_date">experiment date</string>
     <string name="label_experiment_type">experiment type</string>
 

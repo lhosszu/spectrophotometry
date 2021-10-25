@@ -8,6 +8,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
+import org.apache.commons.lang3.StringUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -16,6 +17,7 @@ import java.lang.ref.WeakReference
 class AcquisitionActivity : AppCompatActivity(), AcquisitionView {
 
     private lateinit var experimentNameField: TextInputLayout
+    private lateinit var concentrationField: TextInputLayout
     private lateinit var batteryLevel: ImageView
     private lateinit var presenter: AcquisitionPresenter
 
@@ -35,6 +37,7 @@ class AcquisitionActivity : AppCompatActivity(), AcquisitionView {
     private fun initFields() {
         presenter = AcquisitionPresenter(this)
         experimentNameField = findViewById(R.id.text_experiment_name)
+        concentrationField = findViewById(R.id.text_concentration)
         batteryLevel = findViewById(R.id.image_battery_level_acquisition)
     }
 
@@ -70,4 +73,8 @@ class AcquisitionActivity : AppCompatActivity(), AcquisitionView {
         batteryLevel.setImageLevel(level)
     }
 
+    override fun readConcentration(): Double {
+        val editText = concentrationField.editText!!
+        return if (StringUtils.isNumeric(editText.text)) return editText.text.toString().toDouble() else 0.0
+    }
 }

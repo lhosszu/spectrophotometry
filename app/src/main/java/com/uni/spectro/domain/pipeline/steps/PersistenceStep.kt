@@ -17,9 +17,9 @@ class PersistenceStep(private val details: ExperimentDetails) : Step<PixelData, 
 
         val realmExperiment: RealmExperiment = if (analyze()) {
             val selected = SpectrumMaxCalculator(input).maxWavelengthAndIntensity()
-            RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected)
+            RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
         } else {
-            RealmExperiment(details.experimentName(), asRealmList(input), details.type())
+            RealmExperiment(details.experimentName(), asRealmList(input), details.type(), details.concentration())
         }
 
         details.persistence().insert(realmExperiment) { Log.i(TAG, "Spectrum persisted") }

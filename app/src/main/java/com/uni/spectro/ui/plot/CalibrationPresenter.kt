@@ -14,6 +14,10 @@ class CalibrationPresenter(private val view: CalibrationView) {
         }
     }
 
+    fun formatConcentration(concentration: Double): String {
+        return "%.1f".format(concentration)
+    }
+
     private fun setBatteryLevel(level: Int) {
         val scaled = BatteryLevel(level).level()
         view.updateBatteryLevel(scaled)

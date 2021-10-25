@@ -5,4 +5,5 @@ interface AcquisitionView {
     fun absorbanceButtonClick()
     fun calibrationButtonClick()
     fun updateBatteryLevel(level: Int)
+    fun readConcentration(): Double
 }

@@ -92,4 +92,14 @@ class AcquisitionUITest {
     fun canClickCalibrationButton() {
         onView(withId(R.id.btn_calibration)).check(matches(isClickable()))
     }
+
+    @Test
+    fun canDisplayConcentrationInput() {
+        onView(withId(R.id.text_concentration)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun canDisplayExperimentNameInput() {
+        onView(withId(R.id.text_experiment_name)).check(matches(isDisplayed()))
+    }
 }

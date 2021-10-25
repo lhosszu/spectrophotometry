@@ -23,18 +23,22 @@ class SpectroApplication : Application() {
     companion object {
         private val NUMBER_OF_CORES = Runtime.getRuntime().availableProcessors()
 
+        private val SPECTRUM_STACK = Stack<PixelData>()
+
+        private val EXECUTOR = ThreadPoolExecutor(
+                NUMBER_OF_CORES,
+                NUMBER_OF_CORES,
+                1,
+                TimeUnit.SECONDS,
+                LinkedBlockingQueue()
+        )
+
         fun executor(): ThreadPoolExecutor {
-            return ThreadPoolExecutor(
-                    NUMBER_OF_CORES,
-                    NUMBER_OF_CORES,
-                    1,
-                    TimeUnit.SECONDS,
-                    LinkedBlockingQueue()
-            )
+            return EXECUTOR
         }
 
         fun spectrumStack(): Stack<PixelData> {
-            return Stack<PixelData>()
+            return SPECTRUM_STACK
         }
     }
 }

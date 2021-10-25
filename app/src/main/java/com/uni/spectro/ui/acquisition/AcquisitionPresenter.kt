@@ -35,7 +35,7 @@ class AcquisitionPresenter(private val view: AcquisitionView) {
 
     fun collectCalibration(context: WeakReference<Context>, editText: EditText) {
         val experimentName = readExperimentName(editText)
-        Calibration(context, experimentName).run()
+        Calibration(context, experimentName, view.readConcentration()).run()
     }
 
     private fun readExperimentName(editText: EditText): String {

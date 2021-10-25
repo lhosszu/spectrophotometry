@@ -41,6 +41,13 @@ open class RealmExperiment : RealmObject {
         this.experimentType = experimentType.name
     }
 
+    constructor(name: String, dataPoints: RealmList<Double>, experimentType: ExperimentType, concentration: Double) : super() {
+        this.name = name
+        this.dataPoints = dataPoints
+        this.experimentType = experimentType.name
+        this.concentration = concentration
+    }
+
     constructor(name: String, dataPoints: RealmList<Double>, selectedWavelength: Int, maxIntensity: Double) : super() {
         this.name = name
         this.dataPoints = dataPoints

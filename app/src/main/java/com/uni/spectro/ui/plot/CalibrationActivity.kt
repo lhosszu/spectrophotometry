@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
+import com.uni.spectro.persistence.util.DateFormatter.Companion.format
 import com.uni.spectro.wrapper.ExperimentWrapper
 import com.uni.spectro.wrapper.JsonConverter
-import com.uni.spectro.persistence.util.DateFormatter.Companion.format
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -21,6 +21,7 @@ class CalibrationActivity : AppCompatActivity(), CalibrationView {
     private lateinit var experimentDate: TextView
     private lateinit var absorbance: TextView
     private lateinit var wavelength: TextView
+    private lateinit var concentration: TextView
     private lateinit var presenter: CalibrationPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +38,16 @@ class CalibrationActivity : AppCompatActivity(), CalibrationView {
         experimentDate = findViewById(R.id.text_calibration_date_placeholder)
         absorbance = findViewById(R.id.text_calibration_absorbance_placeholder)
         wavelength = findViewById(R.id.text_calibration_wavelength_placeholder)
+        concentration = findViewById(R.id.text_calibration_concentration_placeholder)
     }
 
     override fun showExperimentDetails() {
         val experiment = fromIntent
         experimentName.text = experiment.name
-        experimentDate.text = format(experiment.date!!)
+        experimentDate.text = format(experiment.date)
         absorbance.text = experiment.intensity.toString()
         wavelength.text = experiment.selectedWavelength.toString()
+        concentration.text = formattedConcentration(experiment)
     }
 
     override fun onStart() {
@@ -65,6 +68,10 @@ class CalibrationActivity : AppCompatActivity(), CalibrationView {
 
     override fun updateBatteryLevel(level: Int) {
         batteryLevel.setImageLevel(level)
+    }
+
+    private fun formattedConcentration(experiment: ExperimentWrapper): String {
+        return if (experiment.concentration == 0.0) "unknown" else presenter.formatConcentration(experiment.concentration)
     }
 
     private val fromIntent: ExperimentWrapper

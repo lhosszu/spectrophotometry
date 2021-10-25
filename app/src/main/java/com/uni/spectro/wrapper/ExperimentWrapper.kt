@@ -10,6 +10,7 @@ class ExperimentWrapper {
     lateinit var date: Date
     var selectedWavelength: Int = 0
     var intensity: Double = 0.0
+    var concentration: Double = 0.0
     lateinit var points: List<Double>
     lateinit var experimentType: String
 
@@ -18,6 +19,7 @@ class ExperimentWrapper {
         date = experiment.date
         selectedWavelength = experiment.selectedWavelength
         intensity = experiment.selectedIntensity
+        concentration = experiment.concentration
         points = toArrayList(experiment.dataPoints)
         experimentType = experiment.experimentType
     }

@@ -13,12 +13,21 @@ class ExperimentDetails {
     private lateinit var type: ExperimentType
     private lateinit var persistence: RealmPersistence
     private var selectedWavelength = 0
+    private var concentration: Double = 0.0
 
     constructor(experimentName: String, type: ExperimentType, selectedWavelength: Int) {
         this.experimentName = experimentName
         this.persistence = RealmPersistence()
         this.type = type
         this.selectedWavelength = selectedWavelength
+    }
+
+    constructor(experimentName: String, type: ExperimentType, selectedWavelength: Int, concentration: Double) {
+        this.experimentName = experimentName
+        this.persistence = RealmPersistence()
+        this.type = type
+        this.selectedWavelength = selectedWavelength
+        this.concentration = concentration
     }
 
     constructor(experimentName: String, persistence: RealmPersistence) {
@@ -38,8 +47,8 @@ class ExperimentDetails {
         return ExperimentDetails(experimentName, ExperimentType.ABSORBANCE, 0)
     }
 
-    fun calibration(experimentName: String, wavelength: Int): ExperimentDetails {
-        return ExperimentDetails(experimentName, ExperimentType.CALIBRATION, wavelength)
+    fun calibration(experimentName: String, wavelength: Int, concentration: Double): ExperimentDetails {
+        return ExperimentDetails(experimentName, ExperimentType.CALIBRATION, wavelength, concentration)
     }
 
     fun experimentName(): String {
@@ -56,5 +65,9 @@ class ExperimentDetails {
 
     fun selectedWavelength(): Int {
         return selectedWavelength
+    }
+
+    fun concentration(): Double {
+        return concentration
     }
 }
