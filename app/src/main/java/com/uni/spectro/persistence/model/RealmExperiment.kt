@@ -8,6 +8,7 @@ import io.realm.annotations.Required
 import java.time.Instant
 import java.util.*
 
+// TODO refactor this to builder pattern
 open class RealmExperiment : RealmObject {
 
     @PrimaryKey

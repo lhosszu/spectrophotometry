@@ -3,6 +3,7 @@ package com.uni.spectro.root
 import android.app.Application
 import android.content.Intent
 import com.uni.spectro.domain.pipeline.model.PixelData
+import com.uni.spectro.persistence.util.RealmConfigurationHolder
 import com.uni.spectro.preferences.PreferenceManager
 import com.uni.spectro.services.BatteryLevelService
 import io.realm.Realm
@@ -18,6 +19,7 @@ class SpectroApplication : Application() {
         startService(Intent(this, BatteryLevelService::class.java))
         PreferenceManager.instance.initialize(this)
         Realm.init(this)
+        Realm.deleteRealm(RealmConfigurationHolder.config())
     }
 
     companion object {

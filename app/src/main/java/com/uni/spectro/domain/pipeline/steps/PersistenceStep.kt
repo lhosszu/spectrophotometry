@@ -2,9 +2,11 @@ package com.uni.spectro.domain.pipeline.steps
 
 import android.util.Log
 import com.uni.spectro.domain.calculations.SpectrumMaxCalculator
+import com.uni.spectro.domain.calculations.model.SelectedWavelength
 import com.uni.spectro.domain.pipeline.Step
 import com.uni.spectro.domain.pipeline.model.ExperimentDetails
 import com.uni.spectro.domain.pipeline.model.PixelData
+import com.uni.spectro.persistence.model.ExperimentType
 import com.uni.spectro.persistence.model.RealmExperiment
 import com.uni.spectro.preferences.GlobalSettings
 import com.uni.spectro.preferences.PreferenceManager
@@ -19,7 +21,12 @@ class PersistenceStep(private val details: ExperimentDetails) : Step<PixelData, 
             val selected = SpectrumMaxCalculator(input).maxWavelengthAndIntensity()
             RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
         } else {
-            RealmExperiment(details.experimentName(), asRealmList(input), details.type(), details.concentration())
+            if (details.type() == ExperimentType.CALIBRATION) {
+                val selected = SelectedWavelength(details.selectedWavelength(), input.pixelData()[0])
+                RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
+            } else {
+                RealmExperiment(details.experimentName(), asRealmList(input), details.type(), details.concentration())
+            }
         }
 
         details.persistence().insert(realmExperiment) { Log.i(TAG, "Spectrum persisted") }
