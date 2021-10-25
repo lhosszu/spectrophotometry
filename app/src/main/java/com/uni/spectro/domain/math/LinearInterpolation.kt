@@ -13,12 +13,12 @@ import org.apache.commons.math3.stat.regression.SimpleRegression
 class LinearInterpolation(x: DoubleArray, y: DoubleArray) {
 
     private val slope: Double
-    private val interception: Double
+    private val intercept: Double
     private val rSquared: Double
 
     init {
         val coefficients: DoubleArray = fit(x, y)
-        this.interception = coefficients[0]
+        this.intercept = coefficients[0]
         this.slope = coefficients[1]
         this.rSquared = coefficients[2]
     }
@@ -29,7 +29,7 @@ class LinearInterpolation(x: DoubleArray, y: DoubleArray) {
     }
 
     private fun toX(y: Double): Double {
-        return (y - interception) / slope
+        return (y - intercept) / slope
     }
 
     private fun fit(x: DoubleArray, y: DoubleArray): DoubleArray {
