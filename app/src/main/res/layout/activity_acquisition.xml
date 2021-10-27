@@ -195,7 +195,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:hint="@string/label_concentration" />
+                android:hint="@string/label_concentration"
+                android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
