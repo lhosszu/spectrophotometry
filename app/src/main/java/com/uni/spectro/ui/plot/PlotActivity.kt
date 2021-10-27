@@ -18,29 +18,41 @@ import java.text.DecimalFormat
 import java.text.FieldPosition
 import java.text.Format
 import java.text.ParsePosition
+import java.util.*
 
 class PlotActivity : AppCompatActivity() {
+
+    private val spectrumMaxInfo: String = "max wavelength: %d\nmax %s: %.4f"
 
     private lateinit var plot: XYPlot
     private lateinit var maxPointInfo: TextView
     private lateinit var experimentName: TextView
+    private lateinit var experiment: ExperimentWrapper
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plot)
 
         initFields()
+        plot()
+    }
 
-        val experiment = fromIntent
+    private fun initFields() {
+        plot = findViewById(R.id.plot)
+        maxPointInfo = findViewById(R.id.text_maximum_info)
+        experimentName = findViewById(R.id.text_experiment_name_on_plot)
+        experiment = fromIntent
+        setTextFields()
+    }
+
+    private fun setTextFields() {
         experimentName.text = experiment.name
         if (experiment.selectedWavelength != 0) {
             maxPointInfo.text = maxPointInfo(experiment)
         }
-
-        plot(experiment)
     }
 
-    private fun plot(experiment: ExperimentWrapper) {
+    private fun plot() {
         setPlotProperties()
         when (experiment.points.size) {
             SpectrumConstants.VISIBLE_RANGE_SIZE -> {
@@ -58,12 +70,6 @@ class PlotActivity : AppCompatActivity() {
                 finish()
             }
         }
-    }
-
-    private fun initFields() {
-        plot = findViewById(R.id.plot)
-        maxPointInfo = findViewById(R.id.text_maximum_info)
-        experimentName = findViewById(R.id.text_experiment_name_on_plot)
     }
 
     private fun setPlotProperties() {
@@ -92,7 +98,10 @@ class PlotActivity : AppCompatActivity() {
     }
 
     private fun maxPointInfo(experiment: ExperimentWrapper) =
-            String.format("max wavelength: %d\nmax %s: %.4f", experiment.selectedWavelength, experiment.experimentType.toLowerCase(), experiment.intensity)
+            String.format(spectrumMaxInfo,
+                    experiment.selectedWavelength,
+                    experiment.experimentType.toLowerCase(Locale.ROOT),
+                    experiment.intensity)
 
     private fun lineLabelFormat() = object : Format() {
         override fun format(obj: Any, toAppendTo: StringBuffer, pos: FieldPosition): StringBuffer {
