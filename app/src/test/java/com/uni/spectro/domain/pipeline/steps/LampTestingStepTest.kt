@@ -4,12 +4,12 @@ import com.uni.spectro.domain.pipeline.Pipeline
 import org.assertj.core.api.Assertions
 import org.junit.Test
 
-class SumStepTest : PipelineStepTestBase() {
+class LampTestingStepTest : PipelineStepTestBase() {
 
     @Test
-    fun canInvokeSumStep() {
+    fun canInvokeLampTestingStep() {
         // given
-        val pipeline = Pipeline(SumStep(null))
+        val pipeline = Pipeline(LampTestingStep(null))
 
         // when
         val output = pipeline.execute(INPUT_WITH_FOUR_DATA_POINTS)

@@ -67,7 +67,7 @@ class SignalProcessingPipeline {
         return Pipeline(AcquisitionStep())
                 .pipe(InputValidationStep())
                 .pipe(PersistenceStep(experiment))
-                .pipe(SumStep(context))
+                .pipe(LampTestingStep(context))
     }
 
     /**

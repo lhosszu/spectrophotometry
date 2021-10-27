@@ -41,7 +41,7 @@
 
     <!-- Toast messages -->
     <string name="toast_missing_baseline">CANNOT FIND BASELINE</string>
-    <string name="toast_low_lamp_intensity">LOW LAMP INTENSITY</string>
+    <string name="toast_lamp_emission_problem">LOW LAMP INTENSITY</string>
     <string name="toast_device_connected">DEVICE CONNECTED</string>
     <string name="toast_device_disconnected">DEVICE DISCONNECTED</string>
 </resources>
