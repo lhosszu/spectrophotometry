@@ -2,6 +2,7 @@ package com.uni.spectro.ui.bluetooth
 
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -41,7 +42,7 @@ class BluetoothActivity : AppCompatActivity(), BluetoothDeviceListAdapter.ItemCl
         initRecyclerView()
         promptEnableBluetooth()
         promptEnableLocationAccess()
-        presenter.connect(WeakReference(this))
+        presenter.autoConnect(WeakReference(this))
     }
 
     private fun initFields() {
@@ -71,7 +72,8 @@ class BluetoothActivity : AppCompatActivity(), BluetoothDeviceListAdapter.ItemCl
     }
 
     override fun onItemClick(view: View?, position: Int) {
-        val selectedDevice = bluetoothDeviceListAdapter.getItem(position)
+        val selectedDevice: BluetoothDevice = bluetoothDeviceListAdapter.getItem(position)
+        presenter.connect(selectedDevice, WeakReference(this))
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

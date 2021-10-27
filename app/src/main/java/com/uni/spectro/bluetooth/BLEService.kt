@@ -43,6 +43,10 @@ class BLEService private constructor() {
         }
     }
 
+    fun connect(device: BluetoothDevice, context: WeakReference<Context>) {
+        gatt = device.connectGatt(context.get(), true, GattCallback(), BluetoothDevice.TRANSPORT_LE)
+    }
+
     fun bluetoothEnabled(): Boolean {
         return BluetoothAdapter.getDefaultAdapter().isEnabled
     }

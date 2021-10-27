@@ -1,5 +1,6 @@
 package com.uni.spectro.ui.bluetooth
 
+import android.bluetooth.BluetoothDevice
 import android.content.Context
 import android.util.Log
 import com.uni.spectro.bluetooth.BLEService
@@ -34,10 +35,14 @@ class BluetoothPresenter(private val view: BluetoothView) {
         }
     }
 
-    fun connect(context: WeakReference<Context>) {
+    fun autoConnect(context: WeakReference<Context>) {
         if (!PreferenceManager.instance.getPreference(GlobalSettings.AUTO_CONNECT)) {
             Connect().connect(context)
         }
+    }
+
+    fun connect(device: BluetoothDevice, context: WeakReference<Context>) {
+        Connect().connect(device, context)
     }
 
     fun btEnabled(): Boolean {
