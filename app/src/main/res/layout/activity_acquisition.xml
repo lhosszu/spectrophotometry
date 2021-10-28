@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             app:contentInsetLeft="@dimen/margin_30dp"
             app:contentInsetStart="@dimen/margin_30dp"
-            app:title="acquisition">
+            app:title="@string/title_acquisition_page">
 
             <ImageView
                 android:id="@+id/image_battery_level_acquisition"

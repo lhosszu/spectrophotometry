@@ -4,25 +4,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
-import com.uni.spectro.wrapper.JsonConverter
 import com.uni.spectro.persistence.model.ExperimentType
 import com.uni.spectro.persistence.model.RealmExperiment
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.ui.adapters.RealmExperimentListAdapter
 import com.uni.spectro.ui.experiments.report.ReportActivity
 import com.uni.spectro.ui.plot.CalibrationActivity
 import com.uni.spectro.ui.plot.PlotActivity
+import com.uni.spectro.wrapper.JsonConverter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class ExperimentsActivity : AppCompatActivity(), RealmExperimentListAdapter.ItemClickListener, RealmExperimentListAdapter.ItemLongClickListener, ExperimentsView {
+class ExperimentsActivity : BaseActivity(), RealmExperimentListAdapter.ItemClickListener, RealmExperimentListAdapter.ItemLongClickListener, ExperimentsView {
 
     private lateinit var listAdapter: RealmExperimentListAdapter
     private lateinit var batteryLevel: ImageView

@@ -2,12 +2,12 @@ package com.uni.spectro.ui.experiments.report
 
 import android.os.Bundle
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.uni.spectro.R
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.wrapper.JsonConverter
 import com.uni.spectro.wrapper.ReportWrapper
 
-class ReportActivity : AppCompatActivity() {
+class ReportActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

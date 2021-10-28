@@ -3,18 +3,18 @@ package com.uni.spectro.ui.plot
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
 import com.uni.spectro.persistence.util.DateFormatter.Companion.format
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.wrapper.ExperimentWrapper
 import com.uni.spectro.wrapper.JsonConverter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class CalibrationActivity : AppCompatActivity(), CalibrationView {
+class CalibrationActivity : BaseActivity(), CalibrationView {
 
     private lateinit var batteryLevel: ImageView
     private lateinit var experimentName: TextView

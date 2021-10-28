@@ -2,18 +2,18 @@ package com.uni.spectro.ui.settings
 
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
 import com.uni.spectro.preferences.GlobalSettings
+import com.uni.spectro.root.BaseActivity
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.util.function.Function
 
-class SettingsActivity : AppCompatActivity(), SettingsView {
+class SettingsActivity : BaseActivity(), SettingsView {
 
     private lateinit var batteryLevel: ImageView
     private lateinit var presenter: SettingsPresenter

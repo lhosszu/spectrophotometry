@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.ui.adapters.BluetoothDeviceListAdapter
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 import java.util.*
 
-class BluetoothActivity : AppCompatActivity(), BluetoothDeviceListAdapter.ItemClickListener, BluetoothView {
+class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickListener, BluetoothView {
 
     private val enableBluetoothRequest: Int = 2
     private val enableLocationRequest: Int = 3

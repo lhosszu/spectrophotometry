@@ -11,17 +11,19 @@
     <string name="btn_settings">settings</string>
 
     <!-- Settings page -->
+    <string name="title_settings_page">settings</string>
     <string name="switch_auto_connect">auto connect</string>
     <string name="switch_smooth">smooth spectrum</string>
     <string name="switch_analyze">analyze peaks</string>
     <string name="switch_open_after">auto visualization</string>
     <string name="switch_selected_wavelength">select wavelength</string>
+    <string name="switch_language">english / hungarian</string>
 
     <!-- Data acquisition page -->
+    <string name="title_acquisition_page">acquisition</string>
     <string name="btn_absorbance">absorbance</string>
     <string name="btn_transmittance">transmittance</string>
     <string name="btn_calibration">calibration</string>
-    <string name="btn_sample_inserted">inserted</string>
 
     <string name="label_experiment_name">experiment name</string>
     <string name="label_concentration">concentration</string>
@@ -29,14 +31,16 @@
     <string name="label_experiment_type">experiment type</string>
 
     <!-- Plot page -->
-    <string name="description_spectrum">spectrum image view</string>
-    <string name="label_spectrum">spectrum</string>
+    <string name="label_x_axis">wavelength [nm]</string>
+    <string name="label_y_axis">intensity [-]</string>
+    <string name="label_spectrum_max_info">max wavelength: %d\nmax %s: %.4f</string>
 
     <!-- Single experiment / calibration page -->
     <string name="label_wavelength">wavelength</string>
     <string name="label_absorbance">absorbance</string>
 
     <!-- Experiments page -->
+    <string name="title_experiments_page">experiments</string>
     <string name="ic_experiment_item">experiment item icon</string>
 
     <!-- Toast messages -->

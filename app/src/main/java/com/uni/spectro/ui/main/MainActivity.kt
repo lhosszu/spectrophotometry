@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.Connect
 import com.uni.spectro.bus.MessageEvent
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.ui.acquisition.AcquisitionActivity
 import com.uni.spectro.ui.bluetooth.BluetoothActivity
 import com.uni.spectro.ui.experiments.ExperimentsActivity
@@ -19,7 +19,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
-class MainActivity : AppCompatActivity(), MainView {
+class MainActivity : BaseActivity(), MainView {
 
     private lateinit var batteryLevel: ImageView
     private lateinit var presenter: MainPresenter

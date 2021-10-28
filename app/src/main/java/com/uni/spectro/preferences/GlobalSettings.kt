@@ -9,7 +9,8 @@ enum class GlobalSettings(private val value: Boolean, private val identifier: St
     SMOOTH_SPECTRUM(false, "switch_smooth"),
     ANALYZE_PEAKS(false, "switch_analyze"),
     OPEN_AFTER_ACQUISITION(false, "switch_open_after"),
-    SELECTED_WAVELENGTH(false, "switch_selected_wavelength");
+    SELECTED_WAVELENGTH(false, "switch_selected_wavelength"),
+    LANGUAGE(false, "switch_language");
 
     fun value(): Boolean {
         return value

@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.androidplot.ui.Anchor
 import com.androidplot.ui.HorizontalPositioning
 import com.androidplot.ui.VerticalPositioning
@@ -12,6 +11,7 @@ import com.androidplot.xy.*
 import com.uni.spectro.R
 import com.uni.spectro.constants.SpectrumConstants
 import com.uni.spectro.domain.calculations.SensorCalibration
+import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.wrapper.ExperimentWrapper
 import com.uni.spectro.wrapper.JsonConverter
 import java.text.DecimalFormat
@@ -20,9 +20,11 @@ import java.text.Format
 import java.text.ParsePosition
 import java.util.*
 
-class PlotActivity : AppCompatActivity() {
+class PlotActivity : BaseActivity() {
 
-    private val spectrumMaxInfo: String = "max wavelength: %d\nmax %s: %.4f"
+    private val spectrumMaxInfo: String = resources.getString(R.string.label_spectrum_max_info)
+    private val xAxisName = resources.getString(R.string.label_x_axis);
+    private val yAxisName = resources.getString(R.string.label_y_axis);
 
     private lateinit var plot: XYPlot
     private lateinit var maxPointInfo: TextView
@@ -76,8 +78,8 @@ class PlotActivity : AppCompatActivity() {
         plot.graph.domainGridLinePaint.color = Color.WHITE
         plot.graph.rangeGridLinePaint.color = Color.WHITE
         plot.graph.getLineLabelStyle(XYGraphWidget.Edge.LEFT).format = lineLabelFormat()
-        plot.setDomainLabel("wavelength [nm]")
-        plot.setRangeLabel("intensity [-]")
+        plot.setDomainLabel(xAxisName)
+        plot.setRangeLabel(yAxisName)
         plot.domainStepValue = 8.0
         plot.rangeStepValue = 0.0
         plot.graph.getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).format = DecimalFormat("#")

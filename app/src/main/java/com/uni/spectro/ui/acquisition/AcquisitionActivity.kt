@@ -3,18 +3,18 @@ package com.uni.spectro.ui.acquisition
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
 import com.uni.spectro.bus.MessageEvent
+import com.uni.spectro.root.BaseActivity
 import org.apache.commons.lang3.StringUtils
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.lang.ref.WeakReference
 
-class AcquisitionActivity : AppCompatActivity(), AcquisitionView {
+class AcquisitionActivity : BaseActivity(), AcquisitionView {
 
     private lateinit var experimentNameField: TextInputLayout
     private lateinit var concentrationField: TextInputLayout

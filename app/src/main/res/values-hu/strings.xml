@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Commons -->
+    <string name="app_name">spektrofotométer</string>
+    <string name="label_battery_level">töltöttség</string>
+    <string name="btn_cancel" tools:ignore="ButtonCase">vissza</string>
+
+    <!-- Main page -->
+    <string name="btn_bluetooth">bluetooth</string>
+    <string name="btn_acquisition">adatgyűjtés</string>
+    <string name="btn_experiments">kísérletek</string>
+    <string name="btn_settings">beállítások</string>
+
+    <!-- Settings page -->
+    <string name="title_settings_page">beállítások</string>
+    <string name="switch_auto_connect">auto csatlakozás</string>
+    <string name="switch_smooth">spektrum simítás</string>
+    <string name="switch_analyze">csúcsanalízis</string>
+    <string name="switch_open_after">auto megjelenítés</string>
+    <string name="switch_selected_wavelength">hullámhossz választás</string>
+    <string name="switch_language">magyar / angol</string>
+
+    <!-- Data acquisition page -->
+    <string name="title_acquisition_page">adatgyűjtés</string>
+    <string name="btn_absorbance">abszorbancia</string>
+    <string name="btn_transmittance">transzmittancia</string>
+    <string name="btn_calibration">kalibráció</string>
+
+    <string name="label_experiment_name">kísérlet neve</string>
+    <string name="label_concentration">koncentráció</string>
+    <string name="label_experiment_date">kísérlet dátuma</string>
+    <string name="label_experiment_type">kísérlet típusa</string>
+
+    <!-- Plot page -->
+    <string name="label_x_axis">hullámhossz [nm]</string>
+    <string name="label_y_axis">intenzitás [-]</string>
+    <string name="label_spectrum_max_info">max hullámhossz: %d\nmax %s: %.4f</string>
+
+    <!-- Single experiment / calibration page -->
+    <string name="label_wavelength">wavelength</string>
+    <string name="label_absorbance">abszorbancia</string>
+
+    <!-- Experiments page -->
+    <string name="title_experiments_page">kísérletek</string>
+    <string name="ic_experiment_item">kísérlet elem ikon</string>
+
+    <!-- Toast messages -->
+    <string name="toast_missing_baseline">HIÁNYZÓ ALAPVONAL</string>
+    <string name="toast_lamp_emission_problem">ALACSONY LÁMPAINTENZITÁS</string>
+    <string name="toast_device_connected">ESZKÖZ CSATLAKOZTATVA</string>
+    <string name="toast_device_disconnected">ESZKÖZ SZÉTCSATLAKOZTATVA</string>
+</resources>
