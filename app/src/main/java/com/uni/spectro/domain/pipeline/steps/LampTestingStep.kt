@@ -20,14 +20,13 @@ import java.lang.ref.WeakReference
  */
 class LampTestingStep(private var context: WeakReference<Context>?) : Step<PixelData, PixelData> {
 
-    private val sumIntensityLimit = INTENSITY_SUM_LIMIT * INTENSITY_TOLERANCE_PERCENT
     private val maxIntensityLimit = THEORETICAL_INTENSITY_MAX * INTENSITY_TOLERANCE_PERCENT
 
     override fun invoke(input: PixelData): PixelData {
         val max = SpectrumMaxCalculator(input).maxWavelengthAndIntensity()
         val sum = input.pixelData().sum()
 
-        if (sum < sumIntensityLimit || max.intensity() < maxIntensityLimit) {
+        if (sum < INTENSITY_SUM_LIMIT || max.intensity() > maxIntensityLimit) {
             if (context != null) {
                 Toast.makeText(context!!.get(), R.string.toast_lamp_emission_problem, Toast.LENGTH_SHORT).show()
             }

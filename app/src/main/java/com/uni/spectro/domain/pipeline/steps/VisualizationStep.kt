@@ -24,7 +24,7 @@ class VisualizationStep : Step<PixelData, PixelData> {
 
     constructor(context: WeakReference<Context>) {
         this.context = context
-        preferenceManager = PreferenceManager.instance
+        this.preferenceManager = PreferenceManager.instance
     }
 
     constructor(context: WeakReference<Context>, preferenceManager: PreferenceManager) {

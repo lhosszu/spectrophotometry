@@ -12,7 +12,7 @@ import java.util.concurrent.CountDownLatch
 /**
  * This step is responsible for triggering Bluetooth data collection, and waiting for the result
  */
-class AcquisitionStep : Step<Void, PixelData> {
+open class AcquisitionStep : Step<Void, PixelData> {
 
     private val latch: CountDownLatch = CountDownLatch(1)
 
@@ -33,7 +33,7 @@ class AcquisitionStep : Step<Void, PixelData> {
         try {
             Thread.sleep(500)
         } catch (e: InterruptedException) {
-            e.printStackTrace()
+            Log.e(TAG, "${e.message}")
         }
     }
 
@@ -50,7 +50,7 @@ class AcquisitionStep : Step<Void, PixelData> {
         }
     }
 
-    companion object {
+    private companion object {
         private val TAG = AcquisitionStep::class.java.name
     }
 

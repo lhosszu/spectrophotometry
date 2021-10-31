@@ -11,6 +11,7 @@ import com.uni.spectro.domain.pipeline.SignalProcessingPipeline
 import com.uni.spectro.domain.pipeline.exception.PipelineInvocationException
 import com.uni.spectro.domain.pipeline.model.ExperimentDetails
 import com.uni.spectro.domain.pipeline.model.PixelData
+import com.uni.spectro.domain.pipeline.model.Void
 import com.uni.spectro.preferences.GlobalSettings
 import com.uni.spectro.preferences.PreferenceManager
 import com.uni.spectro.root.SpectroApplication
@@ -82,7 +83,7 @@ class Calibration(private val context: WeakReference<Context>, private val exper
 
     private fun afterBackgroundQuery(experiment: ExperimentDetails, background: PixelData) {
         if (!background.isEmpty) {
-            val sample = processingPipeline.collectPipeline()
+            val sample = processingPipeline.collectPipeline().execute(Void())
             processingPipeline.calibrationPipeline(experiment).execute(Pair(background, sample))
         } else {
             Toast.makeText(context.get(), R.string.toast_missing_baseline, Toast.LENGTH_SHORT).show()
