@@ -22,9 +22,9 @@ import java.util.*
 
 class PlotActivity : BaseActivity() {
 
-    private val spectrumMaxInfo: String = resources.getString(R.string.label_spectrum_max_info)
-    private val xAxisName = resources.getString(R.string.label_x_axis);
-    private val yAxisName = resources.getString(R.string.label_y_axis);
+    private lateinit var spectrumMaxInfo: String
+    private lateinit var xAxisName: String
+    private lateinit var yAxisName: String
 
     private lateinit var plot: XYPlot
     private lateinit var maxPointInfo: TextView
@@ -40,6 +40,10 @@ class PlotActivity : BaseActivity() {
     }
 
     private fun initFields() {
+        spectrumMaxInfo = resources.getString(R.string.label_spectrum_max_info)
+        xAxisName = resources.getString(R.string.label_x_axis)
+        yAxisName = resources.getString(R.string.label_y_axis)
+
         plot = findViewById(R.id.plot)
         maxPointInfo = findViewById(R.id.text_maximum_info)
         experimentName = findViewById(R.id.text_experiment_name_on_plot)
