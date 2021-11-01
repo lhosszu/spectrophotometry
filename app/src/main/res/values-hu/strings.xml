@@ -23,7 +23,7 @@
     <!-- Data acquisition page -->
     <string name="title_acquisition_page">adatgyűjtés</string>
     <string name="btn_absorbance">abszorbancia</string>
-    <string name="btn_transmittance">transzmittancia</string>
+    <string name="btn_transmittance">áteresztés</string>
     <string name="btn_calibration">kalibráció</string>
 
     <string name="label_experiment_name">kísérlet neve</string>
@@ -37,7 +37,8 @@
     <string name="label_spectrum_max_info">max hullámhossz: %d\nmax %s: %.4f</string>
 
     <!-- Single experiment / calibration page -->
-    <string name="label_wavelength">wavelength</string>
+    <string name="title_calibration_page">kalibráció</string>
+    <string name="label_wavelength">hullámhossz</string>
     <string name="label_absorbance">abszorbancia</string>
 
     <!-- Experiments page -->

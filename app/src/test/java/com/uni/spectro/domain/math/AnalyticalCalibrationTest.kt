@@ -6,6 +6,7 @@ import com.uni.spectro.persistence.model.RealmExperiment
 import io.realm.RealmList
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import java.util.*
 
 class AnalyticalCalibrationTest {
 
@@ -28,7 +29,7 @@ class AnalyticalCalibrationTest {
         val calibration = AnalyticalCalibration(allExperiments)
 
         // when
-        val report = calibration.report()
+        val report = calibration.report(Locale("en"))
 
         // then
         assertThat(report.concentrations).contains("B12 ismeretlen 1").contains("B12 ismeretlen 2")

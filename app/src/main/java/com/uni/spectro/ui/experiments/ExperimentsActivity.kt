@@ -122,7 +122,7 @@ class ExperimentsActivity : BaseActivity(), RealmExperimentListAdapter.ItemClick
 
     private fun initButton() {
         findViewById<MaterialToolbar>(R.id.material_toolbar_experiments_page).setOnClickListener {
-            experimentsPresenter.concentrationReport(selectedExperiments)
+            experimentsPresenter.concentrationReport(selectedExperiments, resources.configuration.locales[0])
         }
     }
 

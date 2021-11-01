@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             app:contentInsetLeft="@dimen/margin_30dp"
             app:contentInsetStart="@dimen/margin_30dp"
-            app:title="calibration">
+            app:title="@string/title_calibration_page">
 
             <ImageView
                 android:id="@+id/image_calibration_battery_level"

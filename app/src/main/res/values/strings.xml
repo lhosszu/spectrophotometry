@@ -36,6 +36,7 @@
     <string name="label_spectrum_max_info">max wavelength: %d\nmax %s: %.4f</string>
 
     <!-- Single experiment / calibration page -->
+    <string name="title_calibration_page">calibration</string>
     <string name="label_wavelength">wavelength</string>
     <string name="label_absorbance">absorbance</string>
 

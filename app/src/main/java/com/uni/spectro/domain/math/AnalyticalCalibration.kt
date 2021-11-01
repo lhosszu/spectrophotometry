@@ -1,7 +1,8 @@
 package com.uni.spectro.domain.math
 
-import com.uni.spectro.wrapper.ReportWrapper
 import com.uni.spectro.persistence.model.RealmExperiment
+import com.uni.spectro.wrapper.ReportWrapper
+import java.util.*
 
 /**
  * This class is responsible for using a simple linear interpolation algorithm to fit a linear curve
@@ -19,24 +20,27 @@ class AnalyticalCalibration(allExperiments: List<RealmExperiment>) {
         this.unknownExperiments = unknown(allExperiments)
     }
 
-    fun report(): ReportWrapper {
+    fun report(locale: Locale): ReportWrapper {
         val interpolation = interpolate()
-        val reportBuilder: StringBuilder = buildTextReport(interpolation)
+        val reportBuilder: StringBuilder = buildTextReport(interpolation, locale)
         return ReportWrapper(interpolation.rSquared(), reportBuilder.toString())
     }
 
-    private fun buildTextReport(interpolation: LinearInterpolation): StringBuilder {
+    private fun buildTextReport(interpolation: LinearInterpolation, locale: Locale): StringBuilder {
         val reportBuilder: StringBuilder = StringBuilder()
 
         for (i in unknownExperiments.indices) {
             val experiment = unknownExperiments[i]
             val concentration = interpolation.xValueFor(experiment.selectedIntensity)
 
-            reportBuilder.append("Experiment name:")
+            val experimentName = if (locale.language == "hu") "Kísérlet neve:" else "Experiment name:"
+            val concentrationTitle = if (locale.language == "hu") "Koncentráció:" else "Concentration:"
+
+            reportBuilder.append(experimentName)
             reportBuilder.append("\n\t\t")
             reportBuilder.append(experiment.name)
             reportBuilder.append("\n")
-            reportBuilder.append("Concentration:")
+            reportBuilder.append(concentrationTitle)
             reportBuilder.append("\n\t\t")
             reportBuilder.append(concentration)
             reportBuilder.append(" mg/L")

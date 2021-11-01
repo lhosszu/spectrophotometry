@@ -5,11 +5,12 @@ import com.uni.spectro.bus.MessageEvent
 import com.uni.spectro.bus.MessageType
 import com.uni.spectro.domain.calculations.BatteryLevel
 import com.uni.spectro.domain.math.AnalyticalCalibration
-import com.uni.spectro.wrapper.JsonConverter
 import com.uni.spectro.persistence.model.RealmExperiment
 import com.uni.spectro.persistence.util.RealmConfigurationHolder
+import com.uni.spectro.wrapper.JsonConverter
 import io.realm.Realm
 import io.realm.RealmResults
+import java.util.*
 
 class ExperimentsPresenter() {
 
@@ -41,11 +42,11 @@ class ExperimentsPresenter() {
         view.updateBatteryLevel(scaled)
     }
 
-    fun concentrationReport(experiments: List<RealmExperiment>) {
+    fun concentrationReport(experiments: List<RealmExperiment>, locale: Locale) {
         if (experiments.size > 3) {
             val knownExperimentCount = experiments.filter { it.concentration != 0.0 }.count()
             if (knownExperimentCount > 2) {
-                val reportWrapper = AnalyticalCalibration(experiments).report()
+                val reportWrapper = AnalyticalCalibration(experiments).report(locale)
                 val jsonReport = JsonConverter().toJson(reportWrapper)
                 view.showReport(jsonReport)
             }

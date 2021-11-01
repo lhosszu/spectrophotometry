@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             app:contentInsetLeft="@dimen/margin_30dp"
             app:contentInsetStart="@dimen/margin_30dp"
-            app:title="report" />
+            app:title="@string/title_report_page" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
