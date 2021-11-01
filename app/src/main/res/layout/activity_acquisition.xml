@@ -47,7 +47,6 @@
             android:scrollY="10dp"
             android:src="@drawable/ic_highlight"
             android:tint="@color/blue_dark_background"
-            app:backgroundTint="@color/gray_light_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +83,6 @@
             android:scrollY="10dp"
             android:src="@drawable/ic_light_off"
             android:tint="@color/blue_dark_background"
-            app:backgroundTint="@color/gray_light_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,7 +119,6 @@
             android:scrollY="10dp"
             android:src="@drawable/ic_linear_scale"
             android:tint="@color/blue_dark_background"
-            app:backgroundTint="@color/gray_light_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

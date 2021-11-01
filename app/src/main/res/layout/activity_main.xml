@@ -55,8 +55,7 @@
                 android:contentDescription="@string/btn_bluetooth"
                 android:scrollY="10dp"
                 android:src="@drawable/ic_baseline_bluetooth_24"
-                android:tint="@color/blue_dark_background"
-                app:backgroundTint="@color/gray_light_button" />
+                android:tint="@color/blue_dark_background" />
 
             <TextView
                 android:layout_width="150dp"
@@ -89,8 +88,7 @@
                 android:contentDescription="@string/btn_acquisition"
                 android:scrollY="10dp"
                 android:src="@drawable/ic_lightbulb"
-                android:tint="@color/blue_dark_background"
-                app:backgroundTint="@color/gray_light_button" />
+                android:tint="@color/blue_dark_background" />
 
             <TextView
                 android:layout_width="150dp"
@@ -121,8 +119,7 @@
                 android:contentDescription="@string/btn_experiments"
                 android:scrollY="10dp"
                 android:src="@drawable/ic_list"
-                android:tint="@color/blue_dark_background"
-                app:backgroundTint="@color/gray_light_button" />
+                android:tint="@color/blue_dark_background" />
 
             <TextView
                 android:layout_width="150dp"
@@ -153,8 +150,7 @@
                 android:contentDescription="@string/btn_settings"
                 android:scrollY="10dp"
                 android:src="@drawable/ic_settings"
-                android:tint="@color/blue_dark_background"
-                app:backgroundTint="@color/gray_light_button" />
+                android:tint="@color/blue_dark_background" />
 
             <TextView
                 android:layout_width="150dp"
@@ -169,12 +165,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <Button
-        android:id="@+id/temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />-->
+    <!--    <Button
+            android:id="@+id/temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
