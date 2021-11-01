@@ -44,6 +44,9 @@
     <string name="title_experiments_page">kísérletek</string>
     <string name="ic_experiment_item">kísérlet elem ikon</string>
 
+    <!-- Reporting-->
+    <string name="title_report_page">eredmény</string>
+
     <!-- Toast messages -->
     <string name="toast_missing_baseline">HIÁNYZÓ ALAPVONAL</string>
     <string name="toast_lamp_emission_problem">ALACSONY LÁMPAINTENZITÁS</string>

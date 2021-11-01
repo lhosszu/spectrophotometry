@@ -90,7 +90,7 @@ class ExperimentsActivity : BaseActivity(), RealmExperimentListAdapter.ItemClick
         val selectedItem = listAdapter.getItem(position)
         if (selectedItem.experimentType == ExperimentType.CALIBRATION.name) {
             selectedExperiments.add(selectedItem)
-            findViewById<MaterialToolbar>(R.id.material_toolbar_experiments_page).title = "report"
+            findViewById<MaterialToolbar>(R.id.material_toolbar_experiments_page).title = resources.getString(R.string.title_report_page)
             return true
         }
         return false

@@ -43,6 +43,9 @@
     <string name="title_experiments_page">experiments</string>
     <string name="ic_experiment_item">experiment item icon</string>
 
+    <!-- Reporting-->
+    <string name="title_report_page">report</string>
+
     <!-- Toast messages -->
     <string name="toast_missing_baseline">CANNOT FIND BASELINE</string>
     <string name="toast_lamp_emission_problem">LOW LAMP INTENSITY</string>
