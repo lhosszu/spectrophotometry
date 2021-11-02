@@ -8,11 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: Set up our JDK environment
         uses: actions/setup-java@v1.4.3
         with:
@@ -20,7 +20,7 @@ jobs:
 
       - name: Gradlew privileges
         run: chmod +x ./gradlew
-          
+
       - name: Build
         run: ./gradlew build
 
@@ -29,9 +29,9 @@ jobs:
 
       - name: Android test
         uses: reactivecircus/android-emulator-runner@v2
-          with:
-            api-level: 30
-            target: default
-            arch: x86
-            profile: Nexus 6
-            script: ./gradlew connectedCheck --stacktrace
+        with:
+          api-level: 30
+          target: default
+          arch: x86
+          profile: Nexus 6
+          script: ./gradlew connectedCheck --stacktrace
