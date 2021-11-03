@@ -3,7 +3,7 @@ name: Build & Test
 on:
   push:
     branches:
-      - ci
+      - main
 
 jobs:
   build:
@@ -13,12 +13,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up our JDK environment
+      - name: Set up JDK
         uses: actions/setup-java@v1.4.3
         with:
           java-version: 1.8
 
-      - name: Gradlew privileges
+      - name: Add Gradlew privileges
         run: chmod +x ./gradlew
 
       - name: Build
