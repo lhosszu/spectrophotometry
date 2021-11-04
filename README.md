@@ -13,3 +13,6 @@ The results are stored and visualized, and the application is capable of determi
 as well.
 
 ![device](doc/device.jpg)
+
+### The user interface
+![ui](doc/ui.jpg)
