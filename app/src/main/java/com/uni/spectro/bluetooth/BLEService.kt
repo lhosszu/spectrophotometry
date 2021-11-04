@@ -132,9 +132,7 @@ class BLEService private constructor() {
 
         override fun onCharacteristicRead(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic, status: Int) {
             if (characteristic.uuid == BATTERY_LEVEL_CHARACTERISTIC_UUID) {
-                val percent = String(characteristic.value)
-                Log.i(TAG, "battery level read: $percent")
-                EventBus.getDefault().post(MessageEvent(percent.toInt(), MessageType.BATTERY_LEVEL_CHANGED))
+                postBatteryLevelChangedMessage(characteristic)
             }
         }
 
@@ -144,9 +142,15 @@ class BLEService private constructor() {
             if (characteristic.uuid == SPECTRUM_CHARACTERISTIC_UUID) {
                 val textValue = String(characteristic.value, StandardCharsets.US_ASCII)
                 dataContainer.add(textValue)
-            } else {
-                Log.i(TAG, "battery level changed: " + String(characteristic.value))
+            } else if (characteristic.uuid == BATTERY_LEVEL_CHARACTERISTIC_UUID) {
+                postBatteryLevelChangedMessage(characteristic)
             }
+        }
+
+        private fun postBatteryLevelChangedMessage(characteristic: BluetoothGattCharacteristic) {
+            val percent = String(characteristic.value)
+            Log.i(TAG, "battery level changed: " + String(characteristic.value))
+            EventBus.getDefault().post(MessageEvent(percent.toInt(), MessageType.BATTERY_LEVEL_CHANGED))
         }
     }
 
