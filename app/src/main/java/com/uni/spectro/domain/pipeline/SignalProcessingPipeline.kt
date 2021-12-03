@@ -9,6 +9,7 @@ import com.uni.spectro.domain.pipeline.model.PixelData
 import com.uni.spectro.domain.pipeline.model.Void
 import com.uni.spectro.domain.pipeline.steps.*
 import com.uni.spectro.domain.pipeline.steps.filter.impl.BoxFilter
+import com.uni.spectro.domain.pipeline.steps.filter.impl.GaussianBlur
 import com.uni.spectro.persistence.RealmPersistence
 import java.lang.ref.WeakReference
 
@@ -34,7 +35,7 @@ class SignalProcessingPipeline {
     fun transmittanceSpectrumPipeline(details: ExperimentDetails, visualizationContext: WeakReference<Context>): Pipeline<Void, PixelData> {
         return Pipeline(acquisitionStep)
                 .pipe(InputValidationStep())
-                .pipe(FilteringStep(BoxFilter(5)))
+                .pipe(FilteringStep(GaussianBlur()))
                 .pipe(RangeExtractionStep())
                 .pipe(PersistenceStep(details))
                 .pipe(VisualizationStep(visualizationContext))
@@ -55,7 +56,6 @@ class SignalProcessingPipeline {
     fun absorbanceSpectrumPipeline(details: ExperimentDetails, visualizationContext: WeakReference<Context>): Pipeline<Pair<PixelData, PixelData>, PixelData> {
         return Pipeline(AbsorbanceCalculationStep())
                 .pipe(InputValidationStep())
-                .pipe(FilteringStep(BoxFilter(5)))
                 .pipe(RangeExtractionStep())
                 .pipe(PersistenceStep(details))
                 .pipe(VisualizationStep(visualizationContext))

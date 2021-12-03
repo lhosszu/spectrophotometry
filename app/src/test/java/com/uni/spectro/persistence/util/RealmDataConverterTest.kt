@@ -4,8 +4,7 @@ import io.realm.RealmList
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 
-class
-RealmDataConverterTest {
+class RealmDataConverterTest {
 
     @Test
     fun whenConvertRealmListOfIntegers_thenReturnSameListContent() {
