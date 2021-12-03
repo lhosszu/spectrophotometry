@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uni.spectro.R
 import com.uni.spectro.bluetooth.BLEService
+import com.uni.spectro.bluetooth.BleScanner
 import com.uni.spectro.bus.MessageEvent
 import com.uni.spectro.root.BaseActivity
 import com.uni.spectro.ui.adapters.BluetoothDeviceListAdapter
@@ -34,6 +35,7 @@ class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickLi
     private lateinit var progressBar: ProgressBar
     private lateinit var batteryLevel: ImageView
     private lateinit var presenter: BluetoothPresenter
+    private lateinit var bluetoothScanner: BleScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +71,7 @@ class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickLi
     override fun onStop() {
         super.onStop()
         EventBus.getDefault().unregister(this)
+        bluetoothScanner.stop()
     }
 
     override fun onItemClick(view: View?, position: Int) {
@@ -86,10 +89,12 @@ class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickLi
     }
 
     override fun promptEnableBluetooth() {
+        bluetoothScanner = BleScanner(bluetoothDeviceListAdapter)
         if (!presenter.btEnabled()) {
             startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), enableBluetoothRequest)
         } else {
             bluetoothDeviceListAdapter.addAll(BluetoothAdapter.getDefaultAdapter().bondedDevices)
+            bluetoothScanner.start()
         }
     }
 
@@ -102,6 +107,7 @@ class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickLi
     override fun successfulDeviceConnection() {
         batteryLevel.visibility = View.VISIBLE
         Toast.makeText(this, R.string.toast_device_connected, Toast.LENGTH_SHORT).show()
+        bluetoothScanner.stop()
     }
 
     override fun deviceDisconnected() {
@@ -115,6 +121,7 @@ class BluetoothActivity : BaseActivity(), BluetoothDeviceListAdapter.ItemClickLi
             enableBluetoothRequest -> {
                 if (resultCode == Activity.RESULT_OK) {
                     bluetoothDeviceListAdapter.addAll(BluetoothAdapter.getDefaultAdapter().bondedDevices)
+                    bluetoothScanner.start()
                 }
             }
         }

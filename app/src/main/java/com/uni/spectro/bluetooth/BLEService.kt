@@ -92,7 +92,7 @@ class BLEService private constructor() {
     }
 
     fun readBattery() {
-        if (bluetoothEnabled()) {
+        if (bluetoothEnabled() && this::batteryLevel.isInitialized) {
             try {
                 gatt.readCharacteristic(batteryLevel)
             } catch (e: Exception) {
