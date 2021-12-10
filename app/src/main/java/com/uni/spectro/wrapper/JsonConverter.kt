@@ -8,10 +8,19 @@ class JsonConverter {
 
     private val mapper = ObjectMapper()
 
-    fun toJson(`object`: RealmExperiment): String {
+    fun toJson(experiment: RealmExperiment): String {
         return try {
-            val wrapper = ExperimentWrapper(`object`)
+            val wrapper = ExperimentWrapper(experiment)
             mapper.writeValueAsString(wrapper)
+        } catch (e: JsonProcessingException) {
+            throw RuntimeException("Cannot convert object to json", e)
+        }
+    }
+
+    fun toJson(experiments: List<RealmExperiment>): String {
+        return try {
+            val wrappedExperiments: List<ExperimentWrapper> = experiments.map { ExperimentWrapper() }
+            mapper.writerWithDefaultPrettyPrinter().writeValueAsString(wrappedExperiments)
         } catch (e: JsonProcessingException) {
             throw RuntimeException("Cannot convert object to json", e)
         }

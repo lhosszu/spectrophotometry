@@ -2,7 +2,6 @@ package com.uni.spectro.root
 
 import android.app.Application
 import com.uni.spectro.domain.pipeline.model.PixelData
-import com.uni.spectro.persistence.util.RealmConfigurationHolder
 import com.uni.spectro.preferences.PreferenceManager
 import io.realm.Realm
 import java.util.*
@@ -16,7 +15,7 @@ class SpectroApplication : Application() {
         super.onCreate()
         PreferenceManager.instance.initialize(this)
         Realm.init(this)
-        Realm.deleteRealm(RealmConfigurationHolder.config())
+        //Realm.deleteRealm(RealmConfigurationHolder.config())
     }
 
     companion object {

@@ -2,17 +2,18 @@ package com.uni.spectro.wrapper
 
 import com.uni.spectro.persistence.model.RealmExperiment
 import com.uni.spectro.persistence.util.RealmDataConverter.Companion.toArrayList
+import java.time.Instant
 import java.util.*
 
 class ExperimentWrapper {
 
-    lateinit var name: String
-    lateinit var date: Date
+    var name: String = ""
+    var date: Date = Date.from(Instant.now())
     var selectedWavelength: Int = 0
     var intensity: Double = 0.0
     var concentration: Double = 0.0
-    lateinit var points: List<Double>
-    lateinit var experimentType: String
+    var points: List<Double> = emptyList()
+    var experimentType: String = ""
 
     constructor(experiment: RealmExperiment) {
         name = experiment.name
