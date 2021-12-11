@@ -4,12 +4,14 @@ import android.util.Log
 import com.uni.spectro.bus.MessageEvent
 import com.uni.spectro.bus.MessageType
 import com.uni.spectro.domain.calculations.BatteryLevel
+import com.uni.spectro.domain.export.Exporter
 import com.uni.spectro.domain.math.AnalyticalCalibration
 import com.uni.spectro.persistence.model.RealmExperiment
 import com.uni.spectro.persistence.util.RealmConfigurationHolder
 import com.uni.spectro.wrapper.JsonConverter
 import io.realm.Realm
 import io.realm.RealmResults
+import java.io.File
 import java.util.*
 
 class ExperimentsPresenter() {
@@ -51,6 +53,11 @@ class ExperimentsPresenter() {
                 view.showReport(jsonReport)
             }
         }
+    }
+
+    fun exportSpectra(dir: File): String {
+        val dumpResult = Exporter().dumpAll(dir)
+        return if (dumpResult) "Exported spectra to JSON" else "Problem with JSON export"
     }
 
     private companion object {

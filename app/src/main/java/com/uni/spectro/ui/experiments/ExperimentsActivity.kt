@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.MaterialToolbar
@@ -121,8 +122,14 @@ class ExperimentsActivity : BaseActivity(), RealmExperimentListAdapter.ItemClick
     }
 
     private fun initButton() {
-        findViewById<MaterialToolbar>(R.id.material_toolbar_experiments_page).setOnClickListener {
-            experimentsPresenter.concentrationReport(selectedExperiments, resources.configuration.locales[0])
+        val toolbar = findViewById<MaterialToolbar>(R.id.material_toolbar_experiments_page)
+        toolbar.setOnClickListener {
+            if (toolbar.title.toString() == resources.getString(R.string.title_report_page)) {
+                experimentsPresenter.concentrationReport(selectedExperiments, resources.configuration.locales[0])
+            } else {
+                val exportResult = experimentsPresenter.exportSpectra(filesDir)
+                Toast.makeText(this, exportResult, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
