@@ -60,6 +60,13 @@ configurations.all {
     }
 }
 
+project.ext {
+    defaultBuildToolsVersion = "30.0.2"
+    defaultMinSdkVersion = 28
+    defaultTargetSdkVersion = 30
+    defaultCompileSdkVersion = 30
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
