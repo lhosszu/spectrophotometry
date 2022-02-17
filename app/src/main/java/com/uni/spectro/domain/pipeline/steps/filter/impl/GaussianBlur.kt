@@ -27,6 +27,11 @@ class GaussianBlur : Filter {
             filtered[input.size - 1 - i] = input[input.size - 1 - i]
         }
 
+        runFilter(filtered, input)
+        return filtered
+    }
+
+    private fun runFilter(filtered: DoubleArray, input: DoubleArray) {
         for (i in padding until filtered.size - padding) {
             var value = 0.0
             for (j in coefficients.indices) {
@@ -34,7 +39,6 @@ class GaussianBlur : Filter {
             }
             filtered[i] = BigDecimal(value).setScale(4, RoundingMode.HALF_EVEN).toDouble()
         }
-        return filtered
     }
 
 }

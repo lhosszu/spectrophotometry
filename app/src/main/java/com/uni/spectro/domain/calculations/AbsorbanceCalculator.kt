@@ -1,9 +1,13 @@
 package com.uni.spectro.domain.calculations
 
-import com.uni.spectro.constants.SpectrumConstants.VISIBLE_RANGE_SIZE
 import kotlin.math.floor
 import kotlin.math.log10
 
+/**
+ * This class is responsible for calculating the 'absorbance' from the:
+ * - reference signal (light source emission + absorption of the sample holder without a sample)
+ * - signal from the real sample (absorption of the analyzed compounds)
+ */
 class AbsorbanceCalculator {
 
     /**
@@ -21,16 +25,10 @@ class AbsorbanceCalculator {
      */
     private var limit: Int
 
-    constructor(background: DoubleArray, signal: DoubleArray) {
-        this.intensityBackground = background
-        this.intensity = signal
-        this.limit = VISIBLE_RANGE_SIZE - 1 //Kotlin's IntRange works with 'endInclusive' parameter
-    }
-
     constructor(background: DoubleArray, signal: DoubleArray, limit: Int) {
         this.intensityBackground = background
         this.intensity = signal
-        this.limit = limit - 1
+        this.limit = limit - 1 //Kotlin's IntRange works with 'endInclusive' parameter
     }
 
     /**
@@ -46,7 +44,7 @@ class AbsorbanceCalculator {
      * 1/T = I0/I [%]
      */
     private fun reciprocalTransmittance(): DoubleArray {
-        return IntRange(0, limit).map { intensityBackground[it].toDouble() / intensity[it].toDouble() }.toDoubleArray()
+        return IntRange(0, limit).map { intensityBackground[it] / intensity[it] }.toDoubleArray()
     }
 
     /**

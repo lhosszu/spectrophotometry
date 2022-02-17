@@ -6,6 +6,10 @@ import com.uni.spectro.persistence.RealmPersistence
 import com.uni.spectro.wrapper.JsonConverter
 import java.io.File
 
+/**
+ * This class is responsible for exporting the database content to a JSON file.
+ * Storing data in JSON for distribution purposes is okay at this scale.
+ */
 class Exporter {
 
     private val database: RealmPersistence = RealmPersistence()

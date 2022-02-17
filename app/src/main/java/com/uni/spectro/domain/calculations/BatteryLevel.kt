@@ -1,5 +1,10 @@
 package com.uni.spectro.domain.calculations
 
+/**
+ * This class is responsible for scaling battery percent information
+ * so that it can be presented using the UI's battery icon
+ * (levels 0-5)
+ */
 class BatteryLevel(private var percentage: Int) {
 
     fun level(): Int {
@@ -20,7 +25,4 @@ class BatteryLevel(private var percentage: Int) {
         }
     }
 
-    companion object {
-        private val TAG = BatteryLevel::class.java.name
-    }
 }

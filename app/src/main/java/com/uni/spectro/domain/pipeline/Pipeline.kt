@@ -1,7 +1,7 @@
 package com.uni.spectro.domain.pipeline
 
 /**
- * Pipeline design patter for processing sensor data.
+ * Pipeline design pattern for processing sensor data.
  */
 class Pipeline<IN, OUT>(private val step: Step<IN, OUT>) {
 

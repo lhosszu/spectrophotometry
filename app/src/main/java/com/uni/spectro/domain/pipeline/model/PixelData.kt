@@ -9,10 +9,6 @@ class PixelData(private val pixelData: DoubleArray) {
         return pixelData
     }
 
-    fun length(): Int {
-        return pixelData.size
-    }
-
     override fun toString(): String {
         return pixelData.contentToString()
     }

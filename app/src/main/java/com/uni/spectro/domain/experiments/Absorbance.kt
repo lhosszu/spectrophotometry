@@ -9,6 +9,10 @@ import com.uni.spectro.domain.pipeline.model.ExperimentDetails
 import com.uni.spectro.domain.pipeline.model.Void
 import java.lang.ref.WeakReference
 
+/**
+ * Absorbance experiment: calculate the absorbance spectrum from the reference spectrum and the
+ * spectrum of the sample itself.
+ */
 class Absorbance(private val context: WeakReference<Context>, private val experimentName: String) {
 
     private val pipeline: SignalProcessingPipeline = SignalProcessingPipeline()

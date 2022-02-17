@@ -5,32 +5,31 @@ import java.math.BigDecimal
 import java.math.BigDecimal.ZERO
 import java.util.*
 
+/**
+ * This class handles the conversion between pixels and wavelengths.
+ * The used mini-spectrometer has a polynomial equation determined by the
+ * manufacturer which is used to calculate exact nanometer values.
+ */
 class SensorCalibration {
 
+    /**
+     * Pixel index to wavelength conversion
+     */
     fun nanometerFor(pixelIndex: Int): Int {
         val exactNanometer = exactNanometerForPixel(pixelIndex)
         return exactNanometer!!.toInt()
     }
 
-    private fun exactNanometerForPixel(pixelIndex: Int): BigDecimal? {
-        if (CALIBRATION_TABLE.containsKey(pixelIndex)) {
-            return CALIBRATION_TABLE[pixelIndex]
-        }
-        val nanometer = A0.add(bCoefficients(pixelIndex))
-        CALIBRATION_TABLE[pixelIndex] = nanometer
-        return nanometer
+    /**
+     * Wavelength to pixel index conversion
+     */
+    fun indexForWavelength(wavelength: Int): Int {
+        return Collections.binarySearch(fullRange(), wavelength)
     }
 
-    private fun bCoefficients(pixelIndex: Int): BigDecimal {
-        val pixel = BigDecimal(pixelIndex)
-        val b1 = B1.multiply(pixel)
-        val b2 = B2.multiply(pixel.pow(2))
-        val b3 = B3.multiply(pixel.pow(3))
-        val b4 = B4.multiply(pixel.pow(4))
-        val b5 = B5.multiply(pixel.pow(5))
-        return listOf<BigDecimal>(b1, b2, b3, b4, b5).fold(ZERO, { acc, next -> acc.add(next) })
-    }
-
+    /**
+     * Pre-calculated and rounded wavelength values for the 400 - 800 nm range
+     */
     fun visibleRange(): List<Int> {
         return listOf(400, 404, 406, 409, 411, 414, 416, 419, 422, 424, 427, 429, 432, 434,
                 437, 439, 442, 444, 447, 449, 452, 455, 457, 460, 462, 464, 467, 469, 472, 474, 477,
@@ -46,6 +45,9 @@ class SensorCalibration {
                 788, 790, 791, 793, 794, 796, 797, 799, 800)
     }
 
+    /**
+     * Pre-calculated and rounded wavelength values for all the pixels.
+     */
     fun fullRange(): List<Int> {
         return listOf(316, 319, 322, 324, 327, 330, 332, 335, 338, 340, 343, 346, 348, 351, 354, 356, 359, 362,
                 364, 367, 370, 372, 375, 378, 380, 383, 385, 388, 391, 393, 396, 398, 401, 404, 406, 409, 411, 414, 416,
@@ -63,11 +65,26 @@ class SensorCalibration {
                 863, 865, 866, 867, 868, 870, 871, 872, 873, 875, 876, 877, 878, 879, 881, 882, 883, 884)
     }
 
-    fun indexForWavelength(wavelength: Int): Int {
-        return Collections.binarySearch(fullRange(), wavelength)
+    private fun exactNanometerForPixel(pixelIndex: Int): BigDecimal? {
+        if (CALIBRATION_TABLE.containsKey(pixelIndex)) {
+            return CALIBRATION_TABLE[pixelIndex]
+        }
+        val nanometer = A0.add(polynomial(pixelIndex))
+        CALIBRATION_TABLE[pixelIndex] = nanometer
+        return nanometer
     }
 
-    companion object {
+    private fun polynomial(pixelIndex: Int): BigDecimal {
+        val pixel = BigDecimal(pixelIndex)
+        val b1 = B1.multiply(pixel)
+        val b2 = B2.multiply(pixel.pow(2))
+        val b3 = B3.multiply(pixel.pow(3))
+        val b4 = B4.multiply(pixel.pow(4))
+        val b5 = B5.multiply(pixel.pow(5))
+        return listOf<BigDecimal>(b1, b2, b3, b4, b5).fold(ZERO) { acc, next -> acc.add(next) }
+    }
+
+    private companion object {
         private val A0 = BigDecimal("3.141620094E+02")
         private val B1 = BigDecimal("2.694245852E+00")
         private val B2 = BigDecimal("-1.236874166E-03")

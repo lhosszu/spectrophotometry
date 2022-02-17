@@ -20,6 +20,13 @@ class AnalyticalCalibration(allExperiments: List<RealmExperiment>) {
         this.unknownExperiments = unknown(allExperiments)
     }
 
+    /**
+     * Creating a report of the calculations. The result contains the freshly calculated
+     * concentration data as well as the R squared value
+     *
+     * @param locale: English and Hungarian languages are supported for now
+     * @return ReportWrapper: results of the calculation wrapped
+     */
     fun report(locale: Locale): ReportWrapper {
         val interpolation = interpolate()
         val reportBuilder: StringBuilder = buildTextReport(interpolation, locale)

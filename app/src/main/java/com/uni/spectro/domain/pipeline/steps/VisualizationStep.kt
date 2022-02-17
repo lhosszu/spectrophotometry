@@ -5,32 +5,21 @@ import android.content.Intent
 import android.util.Log
 import com.uni.spectro.domain.pipeline.Step
 import com.uni.spectro.domain.pipeline.model.PixelData
-import com.uni.spectro.wrapper.JsonConverter
 import com.uni.spectro.persistence.model.ExperimentType
 import com.uni.spectro.persistence.model.RealmExperiment
 import com.uni.spectro.preferences.GlobalSettings
 import com.uni.spectro.preferences.PreferenceManager
 import com.uni.spectro.ui.plot.PlotActivity
+import com.uni.spectro.wrapper.JsonConverter
 import io.realm.RealmList
 import java.lang.ref.WeakReference
 
 /**
  * This step is responsible for visualizing the spectrum on the given context.
  */
-class VisualizationStep : Step<PixelData, PixelData> {
+class VisualizationStep(private val context: WeakReference<Context>) : Step<PixelData, PixelData> {
 
-    private val context: WeakReference<Context>
-    private val preferenceManager: PreferenceManager
-
-    constructor(context: WeakReference<Context>) {
-        this.context = context
-        this.preferenceManager = PreferenceManager.instance
-    }
-
-    constructor(context: WeakReference<Context>, preferenceManager: PreferenceManager) {
-        this.context = context
-        this.preferenceManager = preferenceManager
-    }
+    private val preferenceManager: PreferenceManager = PreferenceManager.instance
 
     override operator fun invoke(input: PixelData): PixelData {
         Log.i(TAG, "Visualizing spectrum")
@@ -53,7 +42,7 @@ class VisualizationStep : Step<PixelData, PixelData> {
         context.get()!!.startActivity(intent)
     }
 
-    companion object {
+    private companion object {
         private val TAG = VisualizationStep::class.java.name
     }
 }

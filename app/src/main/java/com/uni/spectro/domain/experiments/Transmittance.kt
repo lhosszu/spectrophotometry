@@ -8,6 +8,10 @@ import com.uni.spectro.root.SpectroApplication
 import java.lang.ref.WeakReference
 import java.util.concurrent.CompletableFuture
 
+/**
+ * Transmittance experiment:
+ * the basic type of spectra collection, analysing the transmitted light without extra processing.
+ */
 class Transmittance(private val context: WeakReference<Context>, private val experimentName: String) {
 
     private val pipeline: SignalProcessingPipeline = SignalProcessingPipeline()

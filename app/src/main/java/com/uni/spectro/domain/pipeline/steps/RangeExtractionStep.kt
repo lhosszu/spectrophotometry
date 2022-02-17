@@ -34,7 +34,7 @@ class RangeExtractionStep : Step<PixelData, PixelData> {
         return input.drop(offset).take(limit).toDoubleArray()
     }
 
-    companion object {
+    private companion object {
         private val TAG = RangeExtractionStep::class.java.name
     }
 }

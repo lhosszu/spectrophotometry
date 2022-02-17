@@ -38,7 +38,7 @@ class FilteringStep : Step<PixelData, PixelData> {
         return input
     }
 
-    companion object {
+    private companion object {
         private val TAG = FilteringStep::class.java.name
     }
 }

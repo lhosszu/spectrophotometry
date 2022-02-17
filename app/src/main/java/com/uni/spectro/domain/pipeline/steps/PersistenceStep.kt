@@ -12,25 +12,44 @@ import com.uni.spectro.preferences.GlobalSettings
 import com.uni.spectro.preferences.PreferenceManager
 import io.realm.RealmList
 
+/**
+ * This step is responsible for persisting the processed pixel data
+ * Usually takes place before visualization
+ */
 class PersistenceStep(private val details: ExperimentDetails) : Step<PixelData, PixelData> {
 
     override operator fun invoke(input: PixelData): PixelData {
         Log.i(TAG, "Persisting spectrum")
+        val experiment: RealmExperiment = createPersistableExperiment(input)
+        persist(experiment)
+        return input
+    }
 
+    private fun createPersistableExperiment(input: PixelData): RealmExperiment {
         val realmExperiment: RealmExperiment = if (analyze()) {
-            val selected = SpectrumMaxCalculator(input).maxWavelengthAndIntensity()
-            RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
+            analyzeSpectrum(input)
         } else {
             if (details.type() == ExperimentType.CALIBRATION) {
-                val selected = SelectedWavelength(details.selectedWavelength(), input.pixelData()[0])
-                RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
+                calibrationSpectrum(input)
             } else {
                 RealmExperiment(details.experimentName(), asRealmList(input), details.type(), details.concentration())
             }
         }
+        return realmExperiment
+    }
 
+    private fun persist(realmExperiment: RealmExperiment) {
         details.persistence().insert(realmExperiment) { Log.i(TAG, "Spectrum persisted") }
-        return input
+    }
+
+    private fun calibrationSpectrum(input: PixelData): RealmExperiment {
+        val selected = SelectedWavelength(details.selectedWavelength(), input.pixelData()[0])
+        return RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
+    }
+
+    private fun analyzeSpectrum(input: PixelData): RealmExperiment {
+        val selected = SpectrumMaxCalculator(input).maxWavelengthAndIntensity()
+        return RealmExperiment(details.experimentName(), asRealmList(input), details.type(), selected, details.concentration())
     }
 
     private fun asRealmList(input: PixelData): RealmList<Double> {
@@ -43,7 +62,7 @@ class PersistenceStep(private val details: ExperimentDetails) : Step<PixelData, 
         return PreferenceManager.instance.getPreference(GlobalSettings.ANALYZE_PEAKS)
     }
 
-    companion object {
+    private companion object {
         private val TAG = PersistenceStep::class.java.name
     }
 }
