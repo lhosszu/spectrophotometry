@@ -2,6 +2,10 @@ package com.uni.spectro.bluetooth
 
 import java.util.*
 
+/**
+ * Bluetooth Low Energy specific constants
+ * (unique identifiers for services / characteristics)
+ */
 object GattAttributes {
     @JvmField
     val SPECTRUM_SERVICE_UUID: UUID = UUID.fromString("4fafc201-1fb5-459e-8fcc-c5c9c331914b")

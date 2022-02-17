@@ -9,6 +9,10 @@ import com.uni.spectro.preferences.PreferenceManager
 import com.uni.spectro.root.SpectroApplication
 import java.lang.ref.WeakReference
 
+/**
+ * This class is responsible for Bluetooth connections using the BLEService class
+ * Auto connection is available as well as connecting to the selected device
+ */
 class Connect {
 
     private val ble = BLEService.instance
@@ -33,7 +37,7 @@ class Connect {
             if (device.type == DEVICE_TYPE_LE) {
                 SpectroApplication.executor().execute { ble.connect(device, context) }
             } else {
-                Log.e(TAG, "Not a BLE device")
+                Log.e(TAG, "Cannot connect, selected device is not a BLE device")
             }
         }
     }

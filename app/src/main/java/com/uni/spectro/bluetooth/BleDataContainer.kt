@@ -13,12 +13,12 @@ import java.util.concurrent.atomic.AtomicInteger
  */
 class BleDataContainer(private val latch: CountDownLatch) {
 
-    private var counter: AtomicInteger
+    private var pixelCounter: AtomicInteger
     private var data: DoubleArray
 
     init {
         data = DoubleArray(PIXEL_COUNT)
-        counter = AtomicInteger()
+        pixelCounter = AtomicInteger()
     }
 
     fun add(textDataPoint: String) {
@@ -27,8 +27,8 @@ class BleDataContainer(private val latch: CountDownLatch) {
     }
 
     private fun incrementAndAdd(dataPoint: Int) {
-        data[counter.getAndIncrement()] = dataPoint.toDouble()
-        if (counter.get() == PIXEL_COUNT) {
+        data[pixelCounter.getAndIncrement()] = dataPoint.toDouble()
+        if (pixelCounter.get() == PIXEL_COUNT) {
             logData()
             SpectroApplication.spectrumStack().add(PixelData(data))
             Log.e(TAG, "message forwarded to stack")
@@ -39,7 +39,7 @@ class BleDataContainer(private val latch: CountDownLatch) {
 
     private fun reset() {
         data = DoubleArray(PIXEL_COUNT)
-        counter.set(0)
+        pixelCounter.set(0)
     }
 
     // send signal to the original data acquisition thread, that the Stack was populated with the result
@@ -53,7 +53,7 @@ class BleDataContainer(private val latch: CountDownLatch) {
         Log.i(TAG, builder.toString())
     }
 
-    companion object {
+    private companion object {
         private val TAG = BleDataContainer::class.java.name
     }
 

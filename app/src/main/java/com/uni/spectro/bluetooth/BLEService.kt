@@ -17,6 +17,13 @@ import java.lang.ref.WeakReference
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.CountDownLatch
 
+/**
+ * This class is responsible for Bluetooth Low Energy operations.
+ * Handles 3 BLE services (and corresponding characteristics):
+ *  - trigger: sending trigger signal to the spectrophotometer
+ *  - spectrum: receiving data from the sensor
+ *  - battery level: exposing spectrophotometer battery information
+ */
 class BLEService private constructor() {
 
     private lateinit var gatt: BluetoothGatt
