@@ -76,7 +76,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.6.1'
-    implementation 'io.realm:android-adapters:4.0.0'
+    implementation group: 'io.realm', name: 'android-adapters', version: '4.0.0'
     implementation 'org.greenrobot:eventbus:3.2.0'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
     implementation 'com.android.support:multidex:1.0.3'
