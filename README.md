@@ -14,5 +14,12 @@ as well.
 
 ![device](doc/device.jpg)
 
-### The user interface
-![ui](doc/ui.jpg)
+### Main features
+- Bluetooth Low Energy connection to selected device / autoconnect
+- analyze transmitted light / absorbance spectra
+- measure absorbance on selected wavelength / spectral maximum
+- calculate concentration from selected samples (using a calibration equation)
+- store experiment results in a local database instance
+- view selected experiments / spectra
+- multiple configuration options on the Settings page
+- export results to JSON format
