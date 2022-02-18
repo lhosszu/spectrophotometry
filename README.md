@@ -23,3 +23,7 @@ as well.
 - view selected experiments / spectra
 - multiple configuration options on the Settings page
 - export results to JSON format
+
+### References
+[Laganovska et al.](https://www.sciencedirect.com/science/article/pii/S246806722030016X) created an open source spectrophotometer with advanced features in 2020,
+check this out if you are interested in the topic!
